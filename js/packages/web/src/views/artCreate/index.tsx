@@ -352,7 +352,7 @@ const UploadStep = (props: {
           Depending on file type, can take up to 1 minute. Arweave is a new type
           of storage that backs data with sustainable and perpetual endowments,
           allowing users and developers to truly store data forever – for the
-          very first time.
+          very first time. File size limit is <b>10 MB</b>.
         </p>
       </Row>
       <Row className="content-action">
@@ -368,7 +368,14 @@ const UploadStep = (props: {
           fileList={coverFile ? [coverFile as any] : []}
           onChange={async info => {
             const file = info.file.originFileObj;
-            if (file) setCoverFile(file);
+            if (file) {
+                const fileSize = file.size / 1024 / 1024; // in MiB
+                if (fileSize > 10) {
+                    setCustomURLErr('File size exceeds 10 MB');
+                    console.error('File size exceeds 10 MB');
+                }
+                else setCoverFile(file);
+            }
           }}
         >
           <div className="ant-upload-drag-icon">

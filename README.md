@@ -1,8 +1,4 @@
-<p align="center">
-  <a href="https://metaplex.com">
-    <img alt="Metaplex" src="https://metaplex.com/meta.svg" width="250" />
-  </a>
-</p>
+# Custom build of Metaplex
 
 Metaplex is a protocol built on top of Solana that allows:
 
