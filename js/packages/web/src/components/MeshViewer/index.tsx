@@ -15,9 +15,9 @@ export function MeshViewer(props: MeshViewerProps) {
       style={{
         width: `100%`,
         height: `100%`,
-        minHeight: 400,
-        minWidth: 400,
-        maxHeight: 400,
+        minHeight: 500,
+        minWidth: 600,
+        maxHeight: 700,
         ...props.style,
       }}
       src={props.url}

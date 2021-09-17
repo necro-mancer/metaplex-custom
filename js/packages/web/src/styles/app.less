@@ -28,11 +28,74 @@ body {
   margin: 0;
   background-image: url('/img/img1.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-style: normal;
   font-weight: normal;
   font-family: 'SF-Mono' !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.typewriter-end{
+  color: #ffffff;
+  margin: 0;
+  font-family: "SF-Mono";
+  &:after{
+    content: "_";
+    animation: blink 500ms linear infinite alternate;
+  }
+}
+
+.text_1 {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter;
+  display: block;
+  position: relative;
+  animation-duration: 10s;
+  animation-timing-function: steps(25, end);
+  animation-iteration-count: infinite;
+}
+.text_1::after {
+  content: "  _";
+  position: absolute;
+  right: 0;
+  animation: caret infinite;
+  animation-duration: 1s;
+  animation-timing-function: steps(1, end);
+}
+
+@keyframes typewriter {
+  0%, 100% {
+    width: 0;
+  }
+  10%, 90% {
+    width: 8em;
+  }
+}
+@keyframes caret {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes blink{
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
+
+@-moz-keyframes blink{
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
+
+@keyframes blink{
+  0%{opacity: 0;}
+  100%{opacity: 1;}
 }
 
 .no-events {
@@ -80,14 +143,14 @@ code {
 }
 
 .ant-image-img {
+  width: 600px;
   border-radius: 8px;
 }
 
 .ant-card-cover {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
-  width: 300px;
+  .ant-image-img,
   video {
     height: 300px;
     object-fit: cover;
@@ -136,6 +199,12 @@ code {
   color: @text-color-secondary;
 }
 
+.artist-image {
+  margin-left: 10px;
+  width: 32px;
+  border-radius: 50%;
+}
+
 .ant-tabs {
   width: 100%;
 }
@@ -153,6 +222,7 @@ code {
 }
 
 .creator-name {
+  font-size: 1.0rem;
   padding-left: 10px;
 }
 

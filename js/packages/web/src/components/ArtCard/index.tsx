@@ -95,7 +95,7 @@ export const ArtCard = (props: ArtCardProps) => {
         title={`${name}`}
         description={
           <>
-            <MetaAvatar creators={creators} size={32} />
+            <MetaAvatar creators={creators} size={32} /><span className="edition-badge">MASTER</span><br />
             {/* {art.type === ArtType.Master && (
               <>
                 <br />
@@ -107,7 +107,6 @@ export const ArtCard = (props: ArtCardProps) => {
                 )}
               </>
             )} */}
-            <div className="edition-badge">{badge}</div>
           </>
         }
       />

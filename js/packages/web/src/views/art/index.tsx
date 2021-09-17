@@ -79,9 +79,9 @@ export const ArtView = () => {
         <Row ref={ref}>
           <Col xs={{ span: 24 }} md={{ span: 12 }} style={{ padding: '30px' }}>
             <ArtContent
-              style={{ width: 300 }}
+              style={{ width: 450 }}
               height={300}
-              width={300}
+              width={450}
               className="artwork-image"
               pubkey={id}
               active={true}
@@ -95,13 +95,13 @@ export const ArtView = () => {
             style={{ textAlign: 'left', fontSize: '1.4rem' }}
           >
             <Row>
-              <div style={{ fontWeight: 700, fontSize: '4rem' }}>
+              <div style={{ fontWeight: 500, fontSize: '3rem' }}>
                 {art.title || <Skeleton paragraph={{ rows: 0 }} />}
               </div>
             </Row>
             <Row>
               <Col span={6}>
-                <h6>Royalties</h6>
+                <h6 style={{ marginTop: 10 }}>ROYALTIES</h6>
                 <div className="royalties">
                   {((art.seller_fee_basis_points || 0) / 100).toFixed(2)}%
                 </div>
@@ -112,7 +112,7 @@ export const ArtView = () => {
             </Row>
             <Row>
               <Col>
-                <h6 style={{ marginTop: 5 }}>Created By</h6>
+                <h6 style={{ marginTop: 15, marginBottom: 10 }}>CREATOR</h6>
                 <div className="creators">
                   {(art.creators || []).map((creator, idx) => {
                     return (
@@ -121,15 +121,13 @@ export const ArtView = () => {
                         style={{
                           display: 'flex',
                           alignItems: 'center',
-                          marginBottom: 5,
+                          marginBottom: 10,
+                          marginRight: 10,
                         }}
                       >
-                        <MetaAvatar creators={[creator]} size={64} />
+                        <MetaAvatar creators={[creator]} size={32} />
                         <div>
-                          <span className="creator-name">
-                            {creator.name ||
-                              shortenAddress(creator.address || '')}
-                          </span>
+                          <span className="info-content">&nbsp;MASTER</span>
                           <div style={{ marginLeft: 10 }}>
                             {!creator.verified &&
                               (creator.address === pubkey ? (
@@ -163,7 +161,7 @@ export const ArtView = () => {
             </Row>
             <Row>
               <Col>
-                <h6 style={{ marginTop: 5 }}>Edition</h6>
+                <h6 style={{ marginTop: 10 }}> </h6>
                 <div className="art-edition">{badge}</div>
               </Col>
             </Row>
@@ -193,7 +191,10 @@ export const ArtView = () => {
                 >
                   Mark as Sold
                 </Button> */}
-
+            <br />
+            <div className="info-header">ABOUT THE CREATION</div>
+            <div className="info-content">{description}</div>
+            <br />
             {/* TODO: Add conversion of MasterEditionV1 to MasterEditionV2 */}
             <ArtMinting
               id={id}
@@ -204,9 +205,6 @@ export const ArtView = () => {
           <Col span="12">
             <Divider />
             {art.creators?.find(c => !c.verified) && unverified}
-            <br />
-            <div className="info-header">ABOUT THE CREATION</div>
-            <div className="info-content">{description}</div>
             <br />
             {/*
               TODO: add info about artist

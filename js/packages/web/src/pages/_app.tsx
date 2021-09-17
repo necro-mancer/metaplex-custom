@@ -11,6 +11,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Non-fungible Matrix</title>
       </Head>
       <div id="root">
+        <span style={{color: "orange"}}>(base) root@local:~$ </span>
+        <span style={{color:  "white"}}>gsissh matrix</span><br />
+        <span style={{color:  "white"}}>&gt; Connecting to &#10686; via MetaPlex ...</span><br />
+        <span style={{color: "lightgreen"}}>(host) guest@matrix:~$ </span>
+        <span className="text_1">Hello there!</span>
         <Component {...pageProps} />
       </div>
     </>
