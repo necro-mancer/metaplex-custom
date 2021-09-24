@@ -8,14 +8,14 @@ export const Footer = () => {
       <Button
         shape={'circle'}
         target={'_blank'}
-        href={'https://github.com/metaplex-foundation/metaplex'}
+        href={'https://github.com/necro-mancer/non-fungible-matrix'}
         icon={<GithubOutlined />}
         style={{ marginRight: '20px' }}
       ></Button>
       <Button
         shape={'circle'}
         target={'_blank'}
-        href={'https://twitter.com/solana'}
+        href={'https://twitter.com/gsissh_matrix'}
         icon={<TwitterOutlined />}
       ></Button>
     </div>

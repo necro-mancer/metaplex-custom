@@ -74,21 +74,16 @@ export const SetupView = () => {
       )}
       {wallet.connected && !store && (
         <>
-          <p>Store is not initialized yet</p>
-          <p>There must be some ◎ SOL in the wallet before initialization.</p>
-          <p>
-            After initialization, you will be able to manage the list of
-            creators
-          </p>
-
+          <h2>Store is not yet initialised.</h2>
+          <h4>There must be some ◎ SOL in your wallet to initialise.</h4>
           <p>
             <Button
-              className="app-btn"
-              type="primary"
+              style={{ marginTop: 20 }}
+              type="default"
               loading={isInitalizingStore}
               onClick={initializeStore}
             >
-              Init Store
+              INITIALISE STORE
             </Button>
           </p>
         </>
@@ -96,7 +91,7 @@ export const SetupView = () => {
       {wallet.connected && store && (
         <>
           <p>
-            To finish initialization please copy config below into{' '}
+            To finish initialisation please copy config below into{' '}
             <b>packages/web/.env</b> and restart yarn or redeploy
           </p>
           <SetupVariables

@@ -10,6 +10,8 @@ import {
   AuctionCreateView,
   AuctionView,
   HomeView,
+  Widgets,
+  WidgetBS58UINT8,
 } from './views';
 import { AdminView } from './views/admin';
 import { BillingView } from './views/auction/billing';
@@ -36,6 +38,13 @@ export function Routes() {
               path="/artworks/:id?"
               component={() => <ArtworksView />}
             />
+            <Route
+              exact
+              path="/widgets"
+              component={() => <Widgets />}
+            />
+            <Route exact path="/widgets/bs58touint8" component={() => <WidgetBS58UINT8 />} />
+            
             <Route exact path="/art/:id" component={() => <ArtView />} />
             <Route exact path="/artists/:id" component={() => <ArtistView />} />
             <Route exact path="/artists" component={() => <ArtistsView />} />

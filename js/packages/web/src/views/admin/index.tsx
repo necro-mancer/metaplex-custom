@@ -58,10 +58,9 @@ export const AdminView = () => {
     <>
       {!wallet.connected ? (
         <p>
-          <Button type="primary" className="app-btn" onClick={connect}>
-            Connect
-          </Button>{' '}
-          to admin store.
+          <Button style={{ marginTop: 30}} type="default" onClick={connect}>
+            CONNECT AS ADMIN
+          </Button>
         </p>
       ) : !storeAddress || isLoading ? (
         <Spin />
@@ -155,7 +154,7 @@ function ArtistModal({
           onChange={e => setModalAddress(e.target.value)}
         />
       </Modal>
-      <Button onClick={() => setModalOpen(true)}>Add Creator</Button>
+      <Button style={{ marginBottom: 10 }} onClick={() => setModalOpen(true)}>Add Creator</Button>
     </>
   );
 }
@@ -289,10 +288,10 @@ function InnerAdminView({
               Submit
             </Button>
           </Col>
-          <Col span={3}>
+          <Col span={2}>
             <Switch
               checkedChildren="Public"
-              unCheckedChildren="Whitelist Only"
+              unCheckedChildren="Whitelisted"
               checked={newStore.public}
               onChange={val => {
                 setNewStore(_ => {
@@ -345,7 +344,9 @@ function InnerAdminView({
                 }}
               >
                 {loading ? (
-                  <Spin />
+                <div>
+                  <Spin size="large" />
+                </div>
                 ) : (
                   <span>Convert Eligible Master Editions</span>
                 )}

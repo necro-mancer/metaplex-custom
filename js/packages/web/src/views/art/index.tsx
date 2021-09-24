@@ -192,9 +192,6 @@ export const ArtView = () => {
                   Mark as Sold
                 </Button> */}
             <br />
-            <div className="info-header">ABOUT THE CREATION</div>
-            <div className="info-content">{description}</div>
-            <br />
             {/* TODO: Add conversion of MasterEditionV1 to MasterEditionV2 */}
             <ArtMinting
               id={id}
@@ -205,7 +202,9 @@ export const ArtView = () => {
           <Col span="12">
             <Divider />
             {art.creators?.find(c => !c.verified) && unverified}
-            <br />
+            <div className="info-header">ABOUT THE CREATION</div>
+            <div className="info-content">{description}</div>
+            
             {/*
               TODO: add info about artist
 

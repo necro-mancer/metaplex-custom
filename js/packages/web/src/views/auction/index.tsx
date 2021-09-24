@@ -134,7 +134,7 @@ export const AuctionView = () => {
               {items}
             </Carousel>
           </div>
-          <h6>Number Of Winners</h6>
+          <h6>NUMBER OF WINNERS</h6>
           <h1>
             {winnerCount === undefined ? (
               <Skeleton paragraph={{ rows: 0 }} />
@@ -142,7 +142,7 @@ export const AuctionView = () => {
               winnerCount
             )}
           </h1>
-          <h6>Number Of NFTs</h6>
+          <h6>NUMBER OF NFT TOKENS</h6>
           <h1>
             {nftCount === undefined ? (
               <Skeleton paragraph={{ rows: 0 }} />
@@ -150,7 +150,7 @@ export const AuctionView = () => {
               nftCount
             )}
           </h1>
-          <h6>About this {nftCount === 1 ? 'NFT' : 'Collection'}</h6>
+          <h6>ABOUT THIS {nftCount === 1 ? 'NFT' : 'COLLECTION'}</h6>
           <div className="auction-paragraph">
             {hasDescription && <Skeleton paragraph={{ rows: 3 }} />}
             {description ||
@@ -187,19 +187,18 @@ export const AuctionView = () => {
           </h2>
           <Row gutter={[50, 0]} style={{ marginRight: 'unset' }}>
             <Col>
-              <h6>Edition</h6>
+              
               {!auction && (
                 <Skeleton title={{ width: '100%' }} paragraph={{ rows: 0 }} />
               )}
               {auction && (
                 <p className="auction-art-edition">
-                  {(auction?.items.length || 0) > 1 ? 'Multiple' : edition}
                 </p>
               )}
             </Col>
 
             <Col>
-              <h6>View on</h6>
+              <h6>&nbsp;VIEW ON</h6>
               <div style={{ display: 'flex' }}>
                 <Button
                   className="tag"

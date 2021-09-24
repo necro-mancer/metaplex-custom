@@ -31,8 +31,8 @@ export const ArtistsView = () => {
             <ArtistCard
               key={id}
               artist={{
-                address: m.info.address,
-                name: m.info.name || '',
+                address: m.info.address || '',
+                name: 'MASTER',
                 image: m.info.image || '',
                 link: m.info.twitter || '',
               }}
