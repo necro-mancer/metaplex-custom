@@ -227,7 +227,7 @@ const CategoryStep = (props: {
       <Row className="call-to-action">
         <h2>Create a new item</h2>
         <p>
-          First time creating on Metaplex? <b>Note</b>: File size limit is <b>10 MB</b> on ArWeave.
+          This DApp uses Metaplex! <b>Note</b>: File size limit is <b>10 MB</b> on Arweave.
         </p>
       </Row>
       <Row justify={width < 768 ? 'center' : 'start'}>
@@ -769,7 +769,7 @@ const RoyaltiesSplitter = (props: {
           };
 
           return (
-            <Col span={24} key={idx}>
+            <Col span={36} key={idx}>
               <Row
                 align="middle"
                 gutter={[0, 16]}

@@ -11,10 +11,11 @@ import {
   Card,
 } from 'antd';
 import { useParams } from 'react-router-dom';
-import { useArt, useExtendedArt } from '../../hooks';
-
+import { useArt, useAccount, useExtendedArt } from '../../hooks';
+// import { useArt, useExtendedArt } from '../../hooks';
 import { ArtContent } from '../../components/ArtContent';
 import { shortenAddress, useConnection } from '@oyster/common';
+import { AccountInfo } from '@solana/web3.js';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { MetaAvatar } from '../../components/MetaAvatar';
 import { sendSignMetadata } from '../../actions/sendSignMetadata';
@@ -28,21 +29,21 @@ export const ArtView = () => {
   const { id } = useParams<{ id: string }>();
   const wallet = useWallet();
   const [remountArtMinting, setRemountArtMinting] = useState(0);
-
   const connection = useConnection();
   const art = useArt(id);
+  const account = useAccount(id);
+  
   let badge = '';
   if (art.type === ArtType.NFT) {
     badge = 'Unique';
   } else if (art.type === ArtType.Master) {
-    badge = 'NFT 0';
+    badge = 'Genesis';
   } else if (art.type === ArtType.Print) {
     badge = `${art.edition} of ${art.supply}`;
   }
   const { ref, data } = useExtendedArt(id);
 
   // const { userAccounts } = useUserAccounts();
-
   // const accountByMint = userAccounts.reduce((prev, acc) => {
   //   prev.set(acc.info.mint.toBase58(), acc);
   //   return prev;
@@ -50,9 +51,12 @@ export const ArtView = () => {
 
   const description = data?.description;
   const attributes = data?.attributes;
-
+  
   const pubkey = wallet?.publicKey?.toBase58() || '';
-
+  const numCreators = art?.creators?.length || '';
+  
+  const whoOwn = account || 'unknown';
+  
   const tag = (
     <div className="info-header">
       <Tag color="blue">UNVERIFIED</Tag>
@@ -77,7 +81,7 @@ export const ArtView = () => {
     <Content>
       <Col>
         <Row ref={ref}>
-          <Col xs={{ span: 24 }} md={{ span: 12 }} style={{ padding: '30px' }}>
+          <Col xs={{ span: 24 }} md={{ span: 12 }} style={{ marginTop: 40, padding: '30px' }}>
             <ArtContent
               style={{ width: 450 }}
               height={300}
@@ -95,7 +99,7 @@ export const ArtView = () => {
             style={{ textAlign: 'left', fontSize: '1.4rem' }}
           >
             <Row>
-              <div style={{ fontWeight: 500, fontSize: '3rem' }}>
+              <div style={{ marginTop: 30, fontWeight: 500, fontSize: '3rem' }}>
                 {art.title || <Skeleton paragraph={{ rows: 0 }} />}
               </div>
             </Row>
@@ -126,8 +130,8 @@ export const ArtView = () => {
                         }}
                       >
                         <MetaAvatar creators={[creator]} size={32} />
+                        <div className="art-edition">&nbsp;{creator.address}</div>
                         <div>
-                          <span className="info-content">&nbsp;MASTER</span>
                           <div style={{ marginLeft: 10 }}>
                             {!creator.verified &&
                               (creator.address === pubkey ? (
@@ -146,7 +150,7 @@ export const ArtView = () => {
                                     return true;
                                   }}
                                 >
-                                  Approve
+                                  Verify
                                 </Button>
                               ) : (
                                 tag
@@ -157,11 +161,15 @@ export const ArtView = () => {
                     );
                   })}
                 </div>
+                <h6 style={{ marginTop: 15, marginBottom: -1 }}>Minted on</h6>
+                <div className="art-edition">{
+                    whoOwn
+                }</div>
               </Col>
             </Row>
             <Row>
               <Col>
-                <h6 style={{ marginTop: 10 }}> </h6>
+                <h6 style={{ marginTop: 10, marginBottom: -1 }}>Edition</h6>
                 <div className="art-edition">{badge}</div>
               </Col>
             </Row>
@@ -212,16 +220,15 @@ export const ArtView = () => {
             <div className="info-header">ABOUT THE CREATOR</div>
             <div className="info-content">{art.about}</div> */}
           </Col>
-          <Col span="12">
+          <Col span="9" offset="2">
             {attributes && (
               <>
                 <Divider />
-                <br />
                 <div className="info-header">Attributes</div>
-                <List size="large" grid={{ column: 4 }}>
-                  {attributes.map(attribute => (
-                    <List.Item>
-                      <Card title={attribute.trait_type}>
+                <List size="small" grid={{ column: 4 }}>
+                  {attributes.map((attribute, idx) => (
+                    <List.Item key={idx}>
+                      <Card type="inner" title={attribute.trait_type}>
                         {attribute.value}
                       </Card>
                     </List.Item>

@@ -65,9 +65,9 @@ export const AuctionItem = ({
   };
   return (
     <ArtContent
+      style={{ marginRight: 20, marginTop:60 }}
       pubkey={id}
       className="artwork-image stack-item"
-      style={style}
       active={active}
       allowMeshRender={true}
     />
@@ -86,7 +86,7 @@ export const AuctionView = () => {
   if (art.type === ArtType.NFT) {
     edition = 'Unique';
   } else if (art.type === ArtType.Master) {
-    edition = 'NFT 0';
+    edition = 'Genesis';
   } else if (art.type === ArtType.Print) {
     edition = `${art.edition} of ${art.supply}`;
   }
@@ -182,7 +182,8 @@ export const AuctionView = () => {
         </Col>
 
         <Col span={24} md={12}>
-          <h2 className="art-title">
+          <p></p>
+          <h2 style={{ marginTop: 60, marginLeft: 20 }} className="art-title">
             {art.title || <Skeleton paragraph={{ rows: 0 }} />}
           </h2>
           <Row gutter={[50, 0]} style={{ marginRight: 'unset' }}>

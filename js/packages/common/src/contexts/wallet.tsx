@@ -24,7 +24,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { notify } from '../utils';
+import { notify, notifyerror } from '../utils';
 import { MetaplexModal } from '../components';
 
 export interface WalletModalContextState {
@@ -212,7 +212,7 @@ export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const onError = useCallback((error: WalletError) => {
     console.error(error);
-    notify({
+    notifyerror({
       message: 'Wallet error',
       description: error.message,
     });

@@ -4,6 +4,7 @@ import { useStore } from '@oyster/common';
 import { useMeta } from '../../contexts';
 import { AuctionListView } from './auctionList';
 import { SetupView } from './setup';
+import { ArtworksView } from '../artworks';
 
 export const HomeView = () => {
   const { isLoading, store } = useMeta();

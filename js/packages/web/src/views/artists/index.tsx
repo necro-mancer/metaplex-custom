@@ -32,7 +32,7 @@ export const ArtistsView = () => {
               key={id}
               artist={{
                 address: m.info.address || '',
-                name: 'MASTER',
+                name: 'necromancer',
                 image: m.info.image || '',
                 link: m.info.twitter || '',
               }}
