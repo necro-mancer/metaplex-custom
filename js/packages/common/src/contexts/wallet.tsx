@@ -24,7 +24,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { notify } from '../utils';
+import { notify, notifyerror } from '../utils';
 import { MetaplexModal } from '../components';
 
 export interface WalletModalContextState {
@@ -199,7 +199,7 @@ export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
         options: {
           // @FIXME: this should be changed for Metaplex, and by each Metaplex storefront
           clientId:
-            'BOM5Cl7PXgE9Ylq1Z1tqzhpydY0RVr8k90QQ85N7AKI5QGSrr9iDC-3rvmy0K_hF0JfpLMiXoDhta68JwcxS1LQ',
+            '',
         },
       }),
       getLedgerWallet(),
@@ -212,7 +212,7 @@ export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const onError = useCallback((error: WalletError) => {
     console.error(error);
-    notify({
+    notifyerror({
       message: 'Wallet error',
       description: error.message,
     });

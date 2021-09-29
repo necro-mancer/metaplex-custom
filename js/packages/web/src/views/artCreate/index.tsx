@@ -227,8 +227,7 @@ const CategoryStep = (props: {
       <Row className="call-to-action">
         <h2>Create a new item</h2>
         <p>
-          First time creating on Metaplex?{' '}
-          <a href="#">Read our creators’ guide.</a>
+          This DApp uses Metaplex! <b>Note</b>: File size limit is <b>10 MB</b> on Arweave.
         </p>
       </Row>
       <Row justify={width < 768 ? 'center' : 'start'}>
@@ -770,7 +769,7 @@ const RoyaltiesSplitter = (props: {
           };
 
           return (
-            <Col span={24} key={idx}>
+            <Col span={36} key={idx}>
               <Row
                 align="middle"
                 gutter={[0, 16]}
@@ -1140,12 +1139,11 @@ const Congrats = (props: {
 
   const newTweetURL = () => {
     const params = {
-      text: "I've created a new NFT artwork on Metaplex, check it out!",
+      text: "I've created a new NFT artwork on Solana via Metaplex, check it out!",
       url: `${
         window.location.origin
       }/#/art/${props.nft?.metadataAccount.toString()}`,
-      hashtags: 'NFT,Crypto,Metaplex',
-      // via: "Metaplex",
+      hashtags: 'NFT,Crypto,Metaplex,Solana',
       related: 'Metaplex,Solana',
     };
     const queryParams = new URLSearchParams(params).toString();

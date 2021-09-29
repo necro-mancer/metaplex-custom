@@ -321,11 +321,11 @@ function InnerAnalytics({ mint }: { mint: MintInfo }) {
 
   return (
     <Content>
-      <Col style={{ marginTop: 10 }}>
+      <Col style={{ marginTop: 20 }}>
         <Button
-          type="primary"
+          style={{ marginBottom: 20 }}
+          type="default"
           size="large"
-          className="action-btn"
           onClick={() =>
             rerun({
               auctionViews,
@@ -349,29 +349,29 @@ function InnerAnalytics({ mint }: { mint: MintInfo }) {
           RERUN CALCULATION
         </Button>
         <h1>Overview</h1>
-        <h3>
-          Total NFTs: {totalNFTs} Total Marketplaces: {totalMarketplaces}
-        </h3>
+        <h4>
+          Total NFTs: {totalNFTs}
+        </h4>
+        <h4>
+          Total Marketplaces: {totalMarketplaces}
+        </h4>
         <h1>User Breakdown</h1>
-        <h3>Any Engagement: {Object.values(usersEngaged).length}</h3>
-        <h3>That bid: {Object.values(usersBid).length}</h3>
-        <h3>That sold items: {Object.values(usersPublished).length}</h3>
-        <h3>That minted NFTs: {Object.values(usersWithMetadata).length}</h3>
-        <h1>Sale Info</h1>
-        <h3>
-          Total Sales: ◎
+        <h4>Any Engagement: {Object.values(usersEngaged).length}</h4>
+        <h4>That bid: {Object.values(usersBid).length}</h4>
+        <h4>That sold items: {Object.values(usersPublished).length}</h4>
+        <h4>That minted NFTs: {Object.values(usersWithMetadata).length}</h4>
+        <h1>Sales Information</h1>
+        <h4>
+          Total Sales: ◎&nbsp;
           {fromLamports(
             sortedSales.reduce((acc, r) => (acc += r), 0),
             mint,
           )}
-        </h3>
-        <MemoizedBar sortedSales={sortedSales} mint={mint} />
-
-        <h3>Highest Sale: ◎ {fromLamports(highestSale, mint)}</h3>
-        <h3>Average Sale: ◎ {fromLamports(averageSale, mint)}</h3>
-        <h1>Auction Info</h1>
-        <h3>Average Bids per Auction: {averageBids}</h3>
-        <MemoizedPie byType={byType} />
+        </h4>
+        <h4>Highest Sale: ◎ {fromLamports(highestSale, mint)}</h4>
+        <h4>Average Sale: ◎ {fromLamports(averageSale, mint)}</h4>
+        <h1>Auction Information</h1>
+        <h4>Average Bids per Auction: -</h4>
       </Col>
     </Content>
   );

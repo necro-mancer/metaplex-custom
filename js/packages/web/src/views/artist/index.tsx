@@ -44,13 +44,9 @@ export const ArtistView = () => {
           style={{ margin: '0 30px', textAlign: 'left', fontSize: '1.4rem' }}
         >
           <Col span={24}>
-            <h2>
-              {/* <MetaAvatar creators={creator ? [creator] : []} size={100} /> */}
-              {creator?.info.name || creator?.info.address}
-            </h2>
             <br />
             <div className="info-header">ABOUT THE CREATOR</div>
-            <div className="info-content">{creator?.info.description}</div>
+            <div className="info-content">90s' child. Mathematician. Physicist. Coder. Artist.</div>
             <br />
             <div className="info-header">Art Created</div>
             {artworkGrid}

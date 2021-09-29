@@ -487,7 +487,7 @@ export function Notifications() {
       content={content}
       trigger="click"
     >
-      <img alt='logo' style={{ width: '64px' }} src='/img/logo.png' />
+      <img alt='logo' style={{ width: '96px' }} src='/img/logo_inv.png' />
     </Popover>
   );
 

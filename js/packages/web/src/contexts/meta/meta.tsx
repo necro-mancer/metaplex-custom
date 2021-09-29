@@ -123,12 +123,12 @@ export function MetaProvider({ children = null as any }) {
 
       const nextState = await loadAccounts(connection, all);
 
-      console.log('------->Query finished');
+      console.log('-----> Query finished');
 
       setState(nextState);
 
       setIsLoading(false);
-      console.log('------->set finished');
+      console.log('-----> Set finished');
 
       updateMints(nextState.metadataByMint);
     })();

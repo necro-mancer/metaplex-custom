@@ -7,3 +7,5 @@ export { AuctionView } from './auction';
 export { AuctionCreateView } from './auctionCreate';
 export { ArtworksView } from './artworks';
 export { AnalyticsView } from './analytics';
+export { Widgets } from './widgets';
+export { WidgetBS58UINT8 } from './widget_bs58uint8';
