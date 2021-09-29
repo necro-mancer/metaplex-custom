@@ -83,18 +83,8 @@ export const processMetaData: ProcessAccountsFunc = async (
   }
 };
 
-<<<<<<< HEAD:js/packages/web/src/contexts/meta/processMetaData.ts
-const isMetadataAccount = (account: AccountInfo<Buffer>) => {
-  if (account) {
-    return (account.owner as unknown as any) === METADATA_PROGRAM_ID;
-  } else {
-    return 'HIDDEN' as unknown as any;
-  }
-};
-=======
 const isMetadataAccount = (account: AccountInfo<Buffer>) =>
   account && pubkeyToString(account.owner) === METADATA_PROGRAM_ID;
->>>>>>> a733ebb2262da68d3400f96861fe6ad199e48c3c:js/packages/common/src/contexts/meta/processMetaData.ts
 
 const isMetadataV1Account = (account: AccountInfo<Buffer>) =>
   account.data[0] === MetadataKey.MetadataV1;

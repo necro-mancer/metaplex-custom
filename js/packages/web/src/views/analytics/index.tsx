@@ -352,19 +352,10 @@ function InnerAnalytics({ mint }: { mint: MintInfo }) {
           RERUN CALCULATION
         </Button>
         <h1>Overview</h1>
-<<<<<<< HEAD
-        <h4>
-          Total NFTs: {totalNFTs}
-        </h4>
-        <h4>
-          Total Marketplaces: {totalMarketplaces}
-        </h4>
-=======
         <h3>
           Total NFTs: {totalNFTs}
           {/* Total Marketplaces: {totalMarketplaces} */}
         </h3>
->>>>>>> a733ebb2262da68d3400f96861fe6ad199e48c3c
         <h1>User Breakdown</h1>
         <h4>Any Engagement: {Object.values(usersEngaged).length}</h4>
         <h4>That bid: {Object.values(usersBid).length}</h4>

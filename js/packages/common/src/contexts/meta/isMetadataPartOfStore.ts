@@ -10,15 +10,7 @@ export const isMetadataPartOfStore = (
   >,
   store?: ParsedAccount<Store> | null,
 ) => {
-<<<<<<< HEAD:js/packages/web/src/contexts/meta/isMetadataPartOfStore.ts
-  if (useAll) {
-    return true;
-  }
-  // console.log(m?.account?.owner)
-  if (!m?.info?.data?.creators || !store?.info || !m?.account?.owner) {
-=======
   if (!m?.info?.data?.creators) {
->>>>>>> a733ebb2262da68d3400f96861fe6ad199e48c3c:js/packages/common/src/contexts/meta/isMetadataPartOfStore.ts
     return false;
   }
 

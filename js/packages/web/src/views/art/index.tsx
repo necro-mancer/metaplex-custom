@@ -83,11 +83,7 @@ export const ArtView = () => {
         <Row ref={ref}>
           <Col xs={{ span: 24 }} md={{ span: 12 }} style={{ marginTop: 40, padding: '30px' }}>
             <ArtContent
-<<<<<<< HEAD
-              style={{ width: 450 }}
-=======
               style={{ width: '300px', height: '300px', margin: '0 auto' }}
->>>>>>> a733ebb2262da68d3400f96861fe6ad199e48c3c
               height={300}
               width={450}
               className="artwork-image"
@@ -228,17 +224,10 @@ export const ArtView = () => {
               <>
                 <Divider />
                 <div className="info-header">Attributes</div>
-<<<<<<< HEAD
                 <List size="small" grid={{ column: 4 }}>
                   {attributes.map((attribute, idx) => (
                     <List.Item key={idx}>
                       <Card type="inner" title={attribute.trait_type}>
-=======
-                <List size="large" grid={{ column: 4 }}>
-                  {attributes.map(attribute => (
-                    <List.Item key={attribute.trait_type}>
-                      <Card title={attribute.trait_type}>
->>>>>>> a733ebb2262da68d3400f96861fe6ad199e48c3c
                         {attribute.value}
                       </Card>
                     </List.Item>
