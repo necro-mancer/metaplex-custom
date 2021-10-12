@@ -83,9 +83,13 @@ export const processMetaData: ProcessAccountsFunc = async (
   }
 };
 
-const isMetadataAccount = (account: AccountInfo<Buffer>) =>
-  account && pubkeyToString(account.owner) === METADATA_PROGRAM_ID;
-
+const isMetadataAccount = (account: AccountInfo<Buffer>) => {
+    if (account) {
+      return pubkeyToString(account.owner) === METADATA_PROGRAM_ID;
+    } else {
+      return 'HIDDEN';
+    }
+  };
 const isMetadataV1Account = (account: AccountInfo<Buffer>) =>
   account.data[0] === MetadataKey.MetadataV1;
 

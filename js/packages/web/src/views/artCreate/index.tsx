@@ -1163,14 +1163,9 @@ const Congrats = (props: {
       text: "I've created a new NFT artwork on Solana via Metaplex, check it out!",
       url: `${
         window.location.origin
-<<<<<<< HEAD
-      }/#/art/${props.nft?.metadataAccount.toString()}`,
-      hashtags: 'NFT,Crypto,Metaplex,Solana',
-=======
         }/#/art/${props.nft?.metadataAccount.toString()}`,
-      hashtags: 'NFT,Crypto,Metaplex',
+      hashtags: 'NFT,Crypto,Metaplex,Solana',
       // via: "Metaplex",
->>>>>>> a733ebb2262da68d3400f96861fe6ad199e48c3c
       related: 'Metaplex,Solana',
     };
     const queryParams = new URLSearchParams(params).toString();

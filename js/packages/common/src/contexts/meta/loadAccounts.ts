@@ -319,7 +319,7 @@ const pullEditions = async (
   updater: UpdateStateValueFunc,
   state: MetaState,
 ) => {
-  console.log('Pulling editions for optimized metadata');
+  console.log('Pulling editions for optimising metadata ...');
 
   type MultipleAccounts = UnPromise<ReturnType<typeof getMultipleAccounts>>;
   let setOf100MetadataEditionKeys: string[] = [];
@@ -347,29 +347,31 @@ const pullEditions = async (
       );
     }
   };
-
+  console.log('Perpetual metadata size:', state.metadata.length, 'tokens');
   for (const metadata of state.metadata) {
     let editionKey: StringPublicKey;
-    if (metadata.info.editionNonce === null) {
-      editionKey = await getEdition(metadata.info.mint);
-    } else {
-      editionKey = (
-        await PublicKey.createProgramAddress(
-          [
-            Buffer.from(METADATA_PREFIX),
-            toPublicKey(METADATA_PROGRAM_ID).toBuffer(),
-            toPublicKey(metadata.info.mint).toBuffer(),
-            new Uint8Array([metadata.info.editionNonce || 0]),
-          ],
-          toPublicKey(METADATA_PROGRAM_ID),
-        )
-      ).toBase58();
-    }
+    if (metadata.account) {
+      if (metadata.info.editionNonce === null) {
+        editionKey = await getEdition(metadata.info.mint);
+      } else {
+        editionKey = (
+          await PublicKey.createProgramAddress(
+            [
+              Buffer.from(METADATA_PREFIX),
+              toPublicKey(METADATA_PROGRAM_ID).toBuffer(),
+              toPublicKey(metadata.info.mint).toBuffer(),
+              new Uint8Array([metadata.info.editionNonce || 0]),
+            ],
+            toPublicKey(METADATA_PROGRAM_ID),
+          )
+        ).toBase58();
+      }
 
-    setOf100MetadataEditionKeys.push(editionKey);
+      setOf100MetadataEditionKeys.push(editionKey);
 
-    if (setOf100MetadataEditionKeys.length >= 100) {
-      loadBatch();
+      if (setOf100MetadataEditionKeys.length >= 100) {
+        loadBatch();
+      }
     }
   }
 
@@ -380,9 +382,11 @@ const pullEditions = async (
   await Promise.all(editionPromises);
 
   console.log(
-    'Edition size',
+    'Edition size:',
     Object.keys(state.editions).length,
+    'primary edition(s),',
     Object.keys(state.masterEditions).length,
+    'master edition(s)',
   );
 };
 
@@ -391,7 +395,7 @@ const pullMetadataByCreators = (
   state: MetaState,
   updater: UpdateStateValueFunc,
 ): Promise<any> => {
-  console.log('pulling optimized nfts');
+  console.log('Pulling optimized NFTs ...');
 
   const whitelistedCreators = Object.values(state.whitelistedCreatorsByCreator);
 

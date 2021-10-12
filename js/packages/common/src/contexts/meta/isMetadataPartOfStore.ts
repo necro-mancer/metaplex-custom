@@ -8,16 +8,15 @@ export const isMetadataPartOfStore = (
     string,
     ParsedAccount<WhitelistedCreator>
   >,
-  store?: ParsedAccount<Store> | null,
 ) => {
-  if (!m?.info?.data?.creators) {
+
+  if (!m?.info?.data?.creators || !m?.account?.owner) {
     return false;
   }
 
   return m.info.data.creators.some(
     c =>
-      c.verified &&
-      (store?.info.public ||
-        whitelistedCreatorsByCreator[c.address]?.info?.activated),
+      (c.verified &&
+      whitelistedCreatorsByCreator[c.address]?.info?.activated),
   );
 };

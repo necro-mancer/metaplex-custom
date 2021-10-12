@@ -62,12 +62,12 @@ export function MetaProvider({ children = null as any }) {
       ? await loadAccounts(connection)
       : await limitedLoadAccounts(connection);
 
-    console.log('------->Query finished');
+    console.log('-----> Query finished');
 
     setState(nextState);
 
     setIsLoading(false);
-    console.log('------->set finished');
+    console.log('-----> Set finished');
 
     await updateMints(nextState.metadataByMint);
 
