@@ -22,8 +22,8 @@ import {
   AuctionManagerV2,
   SafetyDepositConfig,
   BidRedemptionTicketV2,
-} from '../models/metaplex';
-import { AuctionManagerV1 } from '../models/metaplex/deprecatedStates';
+} from '../../../common/src/models/metaplex';
+import { AuctionManagerV1 } from '../../../common/src/models/metaplex/deprecatedStates';
 
 export interface MetaState {
   metadata: ParsedAccount<Metadata>[];

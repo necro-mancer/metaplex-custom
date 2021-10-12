@@ -16,6 +16,7 @@ import {
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { notify } from '../utils/notifications';
 import { ExplorerLink } from '../components/ExplorerLink';
+import { useQuerySearch } from '../hooks';
 import {
   TokenInfo,
   TokenListProvider,
@@ -87,10 +88,16 @@ const ConnectionContext = React.createContext<ConnectionConfig>({
 });
 
 export function ConnectionProvider({ children = undefined as any }) {
-  const [endpoint, setEndpoint] = useLocalStorageState(
+  const searchParams = useQuerySearch();
+  const network = searchParams.get('network');
+  const queryEndpoint =
+    network && ENDPOINTS.find(({ name }) => name.startsWith(network))?.endpoint;
+
+  const [savedEndpoint, setEndpoint] = useLocalStorageState(
     'connectionEndpoint',
     ENDPOINTS[0].endpoint,
   );
+  const endpoint = queryEndpoint || savedEndpoint;
 
   const connection = useMemo(
     () => new Connection(endpoint, 'recent'),
@@ -218,7 +225,7 @@ export async function sendTransactionsWithManualRetry(
 ) {
   let stopPoint = 0;
   let tries = 0;
-  let lastInstructionsLength = null;
+  let lastInstructionsLength = 0;
   let toRemoveSigners: Record<number, boolean> = {};
   instructions = instructions.filter((instr, i) => {
     if (instr.length > 0) {
